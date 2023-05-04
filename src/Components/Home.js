@@ -1,8 +1,10 @@
 import React from 'react'
-
-export const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+function Home() {
+    return (
+<div>
+    <h1>Welcome to the Fake Store</h1>
+     <p>Start shopping now!</p>
+</div>
+    );
+  }
 export default Home;
