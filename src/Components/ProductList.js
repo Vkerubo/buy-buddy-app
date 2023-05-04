@@ -15,5 +15,19 @@ function ProductList() {
       // Update state with fetched product data
     };
 
-    fetchProducts(); // Call fetchProducts function
+    fetchProducts();
+     // Call fetchProducts function
   }, []); // Specify empty dependency array to run effect only on mount
+   
+    return (
+    <div>
+      {products.map((product) => ( // Render product list using map function
+        <div key={product.id}>
+          <Link to={`/products/${product.id}`}>{product.title}</Link> // Render clickable link to individual product page
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default ProductList; 
