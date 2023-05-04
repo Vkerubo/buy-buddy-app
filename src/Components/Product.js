@@ -1,8 +1,7 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+     // use Effect
+     
 
-export const Product = () => {
-  return (
-    <div>Product</div>
-  )
 }
 export default Product;
