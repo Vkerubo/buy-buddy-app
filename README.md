@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Buy-Buddy E-commerce App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Buy-Buddy is a simple React application that allows users to browse and purchase products from our online store. The application includes a navbar, a home page, a product list page, a product detail page, and a shopping cart page.
 
-## Available Scripts
+### Getting Started
 
-In the project directory, you can run:
+To get started with Buy-Buddy, you will need to have Node.js and NPM installed on your computer. Once you have those installed, follow these steps:
 
-### `npm start`
+1. Clone the repository to your local machine: git clone "https://github.com/example/buy-buddy.git"
+2. Navigate to the project directory: cd buy-buddy
+3. Install the necessary dependencies: npm install
+4. Start the development server: npm start
+5. Open your web browser and go to "http://localhost:3000"
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### App
 
-### `npm test`
+The App component is the top-level component that renders the other components. It uses the BrowserRouter component from the react-router-dom library to enable client-side routing.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Navbar
 
-### `npm run build`
+The Navbar component is a simple navigation bar that displays links to the home page, the product list page, and the shopping cart page. It uses the Link component from the react-router-dom library to enable client-side navigation.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Home
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The Home component is the home page of the application. It displays a welcome message and an invitation to start shopping.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ProductList
 
-### `npm run eject`
+The ProductList component is the product list page of the application. It fetches a list of products from the fake store API and displays them as links to the product detail page.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Product
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The Product component is the product detail page of the application. It fetches the details of a product from the fake store API based on the product ID in the URL and displays them.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### ShoppingCart
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The ShoppingCart component is the shopping cart page of the application. It displays a list of products that have been added to the cart, which are stored in the CartContext using the useContext hook.
 
-## Learn More
+## Contexts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### CartContext
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The CartContext is a simple context that stores the products that have been added to the shopping cart. It is used by the ShoppingCart component to display the contents of the cart.
 
-### Code Splitting
+### Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Buy-Buddy uses the following dependencies:
 
-### Analyzing the Bundle Size
+- React: a JavaScript library for building user interfaces.
+- React Router: a collection of navigational components for React.
+- React Context API: a way to pass data through the component tree without having to pass props down manually at every level.
+- Fetch API: a modern, Promise-based JavaScript API for making network requests.
+- CSS Modules: a CSS file in which all class names and animation names are scoped locally by default.
+- prop-types: attributes that pass data from the parent element to a child element.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Contributing
 
-### Making a Progressive Web App
+- Valentine Kerubo.
+- Sandra Nyamwea.
+- Gideon Mutugi.
+- Dennis Mutuma Marangu.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Buy-Buddy is licensed under the MIT License.
