@@ -1,20 +1,24 @@
-import { useContext } from 'react'; 
+import { useContext } from "react";
 // Import useContext hook from React
-import { CartContext } from '../contexts/CartContext'; 
+import { CartContext } from "../Contexts/CartContext";
 // Import CartContext from CartContext.js file
 function ShoppingCart() {
-    const { cart } = useContext(CartContext); 
-    // Use useContext
-    return (
-        <div>
-          {cart.map((product) => ( // Render shopping cart items using map function
-            <div key={product.id}>
-              <h3>{product.title}</h3> // Render product title
-              <p>{product.price}</p> // Render product price
-            </div>
-          ))}
-        </div>
-      );
-    }
-    
-    export default ShoppingCart; 
+  const { cart } = useContext(CartContext);
+  // Use useContext
+  return (
+    <div>
+      {cart.map(
+        (
+          product // Render shopping cart items using map function
+        ) => (
+          <div key={product.id}>
+            <h3>{product.title}</h3> // Render product title
+            <p>{product.price}</p> // Render product price
+          </div>
+        )
+      )}
+    </div>
+  );
+}
+
+export default ShoppingCart;

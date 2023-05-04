@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/NavBar";
 import Home from "./Components/Home";
 import ProductList from "./Components/ProductList";
@@ -12,12 +12,12 @@ function App() {
       <CartContextProvider>
         <div className="App">
           <Navbar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/products" component={ProductList} />
-            <Route exact path="/products/:id" component={Product} />
-            <Route exact path="/cart" component={ShoppingCart} />
-          </Switch>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/products" element={<ProductList />} />
+            <Route exact path="/products/:id" element={<Product />} />
+            <Route exact path="/cart" element={<ShoppingCart />} />
+          </Routes>
         </div>
       </CartContextProvider>
     </BrowserRouter>
