@@ -6,11 +6,11 @@ Buy-Buddy is a simple React application that allows users to browse and purchase
 
 To get started with Buy-Buddy, you will need to have Node.js and NPM installed on your computer. Once you have those installed, follow these steps:
 
-1. Clone the repository to your local machine: git clone https://github.com/example/buy-buddy.git
+1. Clone the repository to your local machine: git clone "https://github.com/example/buy-buddy.git"
 2. Navigate to the project directory: cd buy-buddy
 3. Install the necessary dependencies: npm install
 4. Start the development server: npm start
-5. Open your web browser and go to http://localhost:3000
+5. Open your web browser and go to "http://localhost:3000"
 
 ## Components
 
