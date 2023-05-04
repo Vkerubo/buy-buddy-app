@@ -23,10 +23,12 @@ function ProductList() {
     <div>
       {products.map((product) => ( // Render product list using map function
         <div key={product.id}>
-          <Link to={`/products/${product.id}`}>{product.title}</Link> // Render clickable link to individual product page
+          <Link to={`/products/${product.id}`}>{product.title}</Link>
+           // Render clickable link to individual product page
         </div>
       ))}
     </div>
   );
 }
 
+export default ProductList; 
