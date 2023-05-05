@@ -5,6 +5,7 @@ import ProductList from "./Components/ProductList";
 import Product from "./Components/Product";
 import ShoppingCart from "./Components/ShoppingCart";
 import CartContextProvider from "./Contexts/CartContext";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/products/:id" element={<Product />} />
             <Route exact path="/cart" element={<ShoppingCart />} />
           </Routes>
+          <Footer />
         </div>
       </CartContextProvider>
     </BrowserRouter>

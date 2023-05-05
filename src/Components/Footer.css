@@ -1,0 +1,94 @@
+footer {
+  background-color: #f8f8f8;
+  padding: 50px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+footer h3 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.subscribe div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subscribe input[type="email"],
+.subscribe select {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  width: 250px;
+}
+
+.subscribe button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffb6c1;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.app-buttons div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.app-buttons button {
+  margin-right: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.app-buttons img {
+  height: 50px;
+}
+
+.social-media div {
+  display: flex;
+}
+
+.social-media a {
+  margin-right: 10px;
+  color: #333;
+  font-size: 24px;
+}
+
+.social-media a:hover {
+  color: #ffb6c1;
+}
+
+.payment-methods div {
+  display: flex;
+  align-items: center;
+}
+
+.payment-methods img {
+  margin-right: 10px;
+}
+
+.about-us p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.about-us ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-us li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
