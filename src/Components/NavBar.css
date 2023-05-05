@@ -1,0 +1,11 @@
+.navbar {
+  background-color: #eaece0;
+  color: #ffffff;
+  padding: 60px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

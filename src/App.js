@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./Components/Header";
+import Navbar from "./Components/NavBar";
 import Home from "./Components/Home";
 import ProductList from "./Components/ProductList";
 import Product from "./Components/Product";
@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <CartContextProvider>
         <div className="App">
-          <Header />
+          <Navbar />
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/products" element={<ProductList />} />
