@@ -32,7 +32,7 @@ footer h3 {
 }
 
 .app-buttons img {
-  height: 40px;
+  height: 20px;
 }
 
 .social-media a {
@@ -42,7 +42,8 @@ footer h3 {
 }
 
 .payment-methods img {
-  margin-right: 8px;
+  height: 23px;
+  margin-right: 4px;
 }
 
 .about-us p {
