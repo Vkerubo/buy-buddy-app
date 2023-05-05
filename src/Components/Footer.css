@@ -4,7 +4,7 @@ footer {
   left: 0;
   right: 0;
   background-color: #918989;
-  padding: 20px;
+  padding: 5px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -58,4 +58,11 @@ footer h3 {
 .about-us li {
   margin-bottom: 8px;
   font-size: 14px;
+}
+
+body {
+  position: relative; /* Add this to make footer relative to body */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
