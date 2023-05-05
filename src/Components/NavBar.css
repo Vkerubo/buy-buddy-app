@@ -1,11 +1,24 @@
 .navbar {
-  background-color: #eaece0;
-  color: #ffffff;
-  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #a18c8c;
+  color: #fff;
+  padding: 70px;
 }
 
-nav {
+.navbar a {
+  font-size: 30px;
+}
+
+.navbar__links {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  gap: 10px;
+}
+
+.navbar__login {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
 }

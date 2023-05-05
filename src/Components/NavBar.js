@@ -26,9 +26,9 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <Link to="/">Home</Link>
-      <Link to="/products">Products</Link>
-      <Link to="/cart">Cart</Link>
+      <Link to="/">HOME</Link>
+      <Link to="/products">FIND PRODUCTS</Link>
+      <Link to="/cart">CART</Link>
       {/* render login form only if user is not logged in */}
       {!loggedIn && (
         <form onSubmit={handleLogin}>
@@ -46,11 +46,18 @@ function Navbar() {
             value={password}
             onChange={handlePasswordChange}
           />
-          <button type="submit">Log In</button>
+          <div className="login-buttons">
+            <button type="submit">Log In</button>
+          </div>
         </form>
       )}
       {/* render logged in message if user is logged in */}
       {loggedIn && <button>Logged In!</button>}
+      {loggedIn && (
+        <div className="logout-buttons">
+          <button onClick={() => setLoggedIn(false)}>Log Out</button>
+        </div>
+      )}
     </nav>
   );
 }
