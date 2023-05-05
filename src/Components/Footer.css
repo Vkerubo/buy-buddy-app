@@ -1,5 +1,9 @@
 footer {
-  background-color: #918d8d;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #918989;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
