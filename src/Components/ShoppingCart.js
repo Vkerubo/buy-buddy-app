@@ -2,9 +2,13 @@ import { useContext } from "react";
 import { CartContext } from "../Contexts/CartContext";
 
 function ShoppingCart() {
-  const { cart } = useContext(CartContext);
+  const { cart, removeFromCart } = useContext(CartContext);
 
   console.log("Cart in ShoppingCart: ", cart);
+
+  const handleRemoveFromCart = (product) => {
+    removeFromCart(product);
+  };
 
   return (
     <div>
@@ -17,7 +21,10 @@ function ShoppingCart() {
             <div key={product.id}>
               <h3>{product.title}</h3>
               <img src={product.image} alt={product.title} />
-              <p>{product.price}</p>
+              <p>Price: {product.price}</p>
+              <button onClick={() => handleRemoveFromCart(product)}>
+                Remove from Cart
+              </button>
             </div>
           ))}
         </div>
