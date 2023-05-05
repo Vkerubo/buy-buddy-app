@@ -10,8 +10,22 @@ const CartContextProvider = (props) => {
   const addToCart = (product) => {
     console.log("Adding to cart: ", product);
     console.log("Cart before adding: ", cart);
-    // Use the setCart function to update the "cart" state by adding the new product to the array
-    setCart([...cart, product]);
+
+    // Check if the product is already in the cart
+    const existingProductIndex = cart.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (existingProductIndex !== -1) {
+      // If the product is already in the cart, increment its count
+      const updatedCart = [...cart];
+      updatedCart[existingProductIndex].count++;
+      setCart(updatedCart);
+    } else {
+      // If the product is not in the cart, add it with a count of 1
+      setCart([...cart, { ...product, count: 1 }]);
+    }
+
     console.log("Cart after adding: ", cart);
   };
 

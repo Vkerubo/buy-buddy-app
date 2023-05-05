@@ -17,12 +17,13 @@ function ShoppingCart() {
       ) : (
         <div>
           <h2>Your Shopping Cart</h2>
-          {cart.map((product) => (
-            <div key={product.id}>
-              <h3>{product.title}</h3>
-              <img src={product.image} alt={product.title} />
-              <p>Price: {product.price}</p>
-              <button onClick={() => handleRemoveFromCart(product)}>
+          {cart.map((item) => (
+            <div key={`${item.id}-${item.count}`}>
+              <h3>{item.title}</h3>
+              <img src={item.image} alt={item.title} />
+              <p>Price: {item.price}</p>
+              <p>Added to cart: {item.count} times</p>
+              <button onClick={() => handleRemoveFromCart(item)}>
                 Remove from Cart
               </button>
             </div>
