@@ -39,9 +39,13 @@ function ProductList() {
         <button onClick={handleSearch}>Search</button>
       </div>
       <h2>Product List</h2>
-      {filteredProducts.map((product) => (
-        <Product key={product.id} product={product} />
-      ))}
+      {filteredProducts.length === 0 ? (
+        <p>Sorry, the product you are looking for is not available.</p>
+      ) : (
+        filteredProducts.map((product) => (
+          <Product key={product.id} product={product} />
+        ))
+      )}
     </div>
   );
 }
