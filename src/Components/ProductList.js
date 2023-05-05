@@ -32,6 +32,12 @@ function ProductList() {
     setSortingOption(event.target.value);
   };
 
+  const handleSearchInputKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   const sortProducts = (products, option) => {
     switch (option) {
       case "none":
@@ -55,6 +61,7 @@ function ProductList() {
           placeholder="Search products..."
           value={searchQuery}
           onChange={handleSearchInputChange}
+          onKeyDown={handleSearchInputKeyDown}
         />
         <button onClick={handleSearch}>Search</button>
         <select value={sortingOption} onChange={handleSortingOptionChange}>
@@ -65,7 +72,7 @@ function ProductList() {
       </div>
       <h2>Product List</h2>
       {sortedProducts.length === 0 ? (
-        <p>Sorry, the product you are looking for is not available.</p>
+        <p>Product not found!</p>
       ) : (
         sortedProducts.map((product) => (
           <Product key={product.id} product={product} />
