@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../Contexts/CartContext";
 
 function Product({ product }) {
   const { addToCart } = useContext(CartContext);
+  const [count, setCount] = useState(0);
 
   const handleAddToCart = () => {
     addToCart(product);
+    setCount(count + 1);
   };
 
   return (
@@ -14,6 +16,7 @@ function Product({ product }) {
       <img src={product.image} alt={product.title} />
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
+      <p>Added to Cart: {count} times</p>
       <button onClick={handleAddToCart}>Add to Cart</button>
     </div>
   );
