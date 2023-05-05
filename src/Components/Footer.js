@@ -18,6 +18,11 @@ function Footer() {
     console.log(`Subscribing ${email} (${gender}) to the newsletter...`);
   };
 
+  const handleReportProduct = () => {
+    // Do something when "Report a Product" link is clicked
+    console.log("Reporting a product...");
+  };
+
   return (
     <footer>
       <div className="subscribe">
@@ -94,12 +99,14 @@ function Footer() {
           <p>
             <em>Reach out for any assistance: </em> <b>020 345 123</b>
           </p>
-          <p></p>
-          <ul>
-            <li>USA: 123 Main St, New York, NY 10001</li>
-            <li>Canada: 456 Yonge St, Toronto, ON M4Y 1W9</li>
-            <li>UK: 789 Oxford St, London W1D 2HG</li>
-          </ul>
+          <p>
+            <b>Headquarters:</b> Drive Inn lane, Westlands, Nairobi
+          </p>
+          <p>
+            <a href="#" onClick={handleReportProduct}>
+              Report a Product
+            </a>
+          </p>
         </div>
       </div>
     </footer>
