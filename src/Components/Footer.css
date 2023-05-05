@@ -1,5 +1,5 @@
 footer {
-  position: absolute;
+  height: 300px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -8,6 +8,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  border: 1px solid red;
 }
 
 footer h3 {
@@ -61,8 +62,12 @@ footer h3 {
 }
 
 body {
-  position: relative; /* Add this to make footer relative to body */
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
+}
+
+.content {
+  margin-bottom: 50px;
+  margin-top: 100px; /* change 20px to match your footer height */
 }
