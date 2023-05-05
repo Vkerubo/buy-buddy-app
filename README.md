@@ -12,6 +12,19 @@ To get started with Buy-Buddy, you will need to have Node.js and NPM installed o
 4. Start the development server: npm start
 5. Open your web browser and go to "http://localhost:3000"
 
+
+### Features
+
+- This is an e-commerce website called Buy budy. 
+- Where You can log in or log out.
+- You can also subscribe to our newsletters.
+- You can see the homepage then when clicking the Find products, you can see a list of the products.here you can search on products and also sort the products by price.
+- The products are displayed with their details, you can add a product to cart by clicking on the add to cart. When you click on add to cart, it increases the counts to the number of adds you have.
+- You can see all yhe products you’ve added to the carts.
+- You can also remove the products from the cart, and the count on the product will decrease. When the the count is less 1 the product is deleted from the cart.
+- On the bottom of the cart, you can see a checkout button that when you click, it shows a modal.
+- This modal shows the list of All the products on the checkout that you want to pay for. So you can proceed to pay, or you can close the checkout.
+
 ## Components
 
 ### App
