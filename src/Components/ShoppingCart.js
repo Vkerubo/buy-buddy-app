@@ -22,7 +22,9 @@ function ShoppingCart() {
               <h3>{item.title}</h3>
               <img src={item.image} alt={item.title} />
               <p>Price: {item.price}</p>
-              <p>Added to cart: {item.count} times</p>
+              <p>
+                Added to cart: {item.count - (item.removedCount || 0)} times
+              </p>
               <button onClick={() => handleRemoveFromCart(item)}>
                 Remove from Cart
               </button>

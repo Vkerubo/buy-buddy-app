@@ -31,10 +31,25 @@ const CartContextProvider = (props) => {
 
   const removeFromCart = (product) => {
     console.log("Removing from cart: ", product);
-    // Use the filter() method to create a new array called "updatedCart" that excludes the product with the matching ID
-    const updatedCart = cart.filter((item) => item.id !== product.id);
-    // Use the setCart function to update the "cart" state with the new "updatedCart" array
-    setCart(updatedCart);
+
+    // Check if the product is already in the cart
+    const existingProductIndex = cart.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (existingProductIndex !== -1) {
+      // If the product is in the cart, decrement its count by 1
+      const updatedCart = [...cart];
+      updatedCart[existingProductIndex].count--;
+
+      // If the count reaches 0, remove the product from the cart
+      if (updatedCart[existingProductIndex].count === 0) {
+        updatedCart.splice(existingProductIndex, 1);
+      }
+
+      setCart(updatedCart);
+    }
+
     console.log("Cart after removing: ", cart);
   };
 
