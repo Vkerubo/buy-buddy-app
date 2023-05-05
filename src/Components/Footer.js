@@ -39,7 +39,7 @@ function Footer() {
         </div>
       </div>
       <div className="app-buttons">
-        <h3>Download Buy-buddy app from AppStore and Google Play</h3>
+        <h3>Download Buy-buddy free App</h3>
         <div>
           <button>
             <img
@@ -56,7 +56,7 @@ function Footer() {
         </div>
       </div>
       <div className="social-media">
-        <h3>Showcasing our social media handles</h3>
+        <h3>Follow us on social media</h3>
         <div>
           <a href="https://www.facebook.com/buybuddy">
             <i className="fab fa-facebook"></i>
@@ -70,7 +70,7 @@ function Footer() {
         </div>
       </div>
       <div className="payment-methods">
-        <h3>Showing the payment methods we use like Visa and Mastercard</h3>
+        <h3>Payment Methods</h3>
         <div>
           <img
             src="https://via.placeholder.com/100x50.png?text=Visa"
@@ -83,7 +83,7 @@ function Footer() {
         </div>
       </div>
       <div className="about-us">
-        <h3>About us and our branches</h3>
+        <h3>About us</h3>
         <div>
           <p>
             Buy-buddy is a leading online retailer with branches in several
@@ -92,9 +92,9 @@ function Footer() {
             service.
           </p>
           <p>
-            Visit one of our branches today to see our products in person and
-            speak with our knowledgeable staff.
+            <em>Reach out for any assistance: </em> <b>020 345 123</b>
           </p>
+          <p></p>
           <ul>
             <li>USA: 123 Main St, New York, NY 10001</li>
             <li>Canada: 456 Yonge St, Toronto, ON M4Y 1W9</li>
