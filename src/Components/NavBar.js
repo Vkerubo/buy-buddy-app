@@ -4,13 +4,24 @@ import "./NavBar.css";
 
 function Navbar() {
   const [loggedIn, setLoggedIn] = useState(false); // initialize state to false
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const username = e.target.username.value;
-    const password = e.target.password.value;
-    // handle login action here with username and password
-    setLoggedIn(true); // update state to true when user logs in
+    if (email === "" || password === "") {
+      alert("Login required");
+      return;
+    }
+    setLoggedIn(true);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   return (
@@ -21,8 +32,20 @@ function Navbar() {
       {/* render login form only if user is not logged in */}
       {!loggedIn && (
         <form onSubmit={handleLogin}>
-          <input type="text" name="username" placeholder="Username" />
-          <input type="password" name="password" placeholder="Password" />
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
           <button type="submit">Log In</button>
         </form>
       )}
