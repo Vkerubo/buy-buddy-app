@@ -1,13 +1,51 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../Contexts/CartContext";
+import Modal from "react-modal";
+import "./ShoppingCart.css";
+
+Modal.setAppElement("#root");
 
 function ShoppingCart() {
   const { cart, removeFromCart } = useContext(CartContext);
-
-  console.log("Cart in ShoppingCart: ", cart);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleRemoveFromCart = (product) => {
     removeFromCart(product);
+  };
+
+  const handleCheckout = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const createCheckoutMessage = () => {
+    const items = cart.map((item) => ({
+      title: item.title,
+      count: item.count - (item.removedCount || 0),
+      price: item.price,
+    }));
+    const total = cart.reduce(
+      (acc, item) => acc + (item.count - (item.removedCount || 0)) * item.price,
+      0
+    );
+    return (
+      <div>
+        <p>Your Order:</p>
+        <ol>
+          {items.map((item) => (
+            <li key={item.title}>
+              {item.title} ({item.count} x ${item.price}) = $
+              {(item.count * item.price).toFixed(2)}
+            </li>
+          ))}
+        </ol>
+        <p>Total Price: ${total.toFixed(2)}</p>
+      </div>
+    );
   };
 
   return (
@@ -30,6 +68,21 @@ function ShoppingCart() {
               </button>
             </div>
           ))}
+          <button className="checkout" onClick={handleCheckout}>
+            Checkout
+          </button>
+          <Modal
+            isOpen={isModalOpen}
+            onRequestClose={handleCloseModal}
+            shouldCloseOnOverlayClick={false} // This line prevents the modal from closing on overlay click
+            className="modal"
+            overlayClassName="overlay"
+          >
+            <h2>Checkout</h2>
+            <p>{createCheckoutMessage()}</p>
+            <button onClick={handleCloseModal}>Close</button>
+            <button>Proceed to Pay</button>
+          </Modal>
         </div>
       )}
     </div>

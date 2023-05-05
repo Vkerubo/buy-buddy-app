@@ -1,0 +1,15 @@
+.modal {
+  background-color: white;
+  border-radius: 5px;
+  max-width: 500px;
+  margin: auto;
+  padding: 60px;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+button.checkout {
+  z-index: 999;
+}
