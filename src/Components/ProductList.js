@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Product from "./Product";
+import "./ProductList.css";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -70,14 +71,18 @@ function ProductList() {
           <option value="high-to-low">High to low</option>
         </select>
       </div>
-      <h2>Product List</h2>
-      {sortedProducts.length === 0 ? (
-        <p>Product not found!</p>
-      ) : (
-        sortedProducts.map((product) => (
-          <Product key={product.id} product={product} />
-        ))
-      )}
+      <section>
+        <div className="container">
+          <h2>Product List</h2>
+          {sortedProducts.length === 0 ? (
+            <p>Product not found!</p>
+          ) : (
+            sortedProducts.map((product) => (
+              <Product key={product.id} product={product} />
+            ))
+          )}
+        </div>
+      </section>
     </div>
   );
 }
