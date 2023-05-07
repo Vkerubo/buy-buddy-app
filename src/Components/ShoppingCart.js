@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../Contexts/CartContext";
 import Modal from "react-modal";
 import "./ShoppingCart.css";
@@ -10,6 +10,16 @@ function ShoppingCart() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Calculate the total price whenever the cart changes
+  useEffect(() => {
+    let totalPrice = 0;
+    cart.forEach((item) => {
+      const removedCount = item.removedCount || 0;
+      totalPrice += (item.price * (item.count - removedCount));
+    });
+    setTotalPrice(totalPrice);
+  }, [cart]);
+
   const handleRemoveFromCart = (product) => {
     removeFromCart(product);
     // subtract the removed count from the total price
@@ -19,8 +29,12 @@ function ShoppingCart() {
 
   const handleCheckout = () => {
     setIsModalOpen(true);
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth"
+    });
   };
-
+  
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -51,14 +65,14 @@ function ShoppingCart() {
   };
 
   return (
-    <div className="shopping-cart">
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <div className="cart-items-container">
-          <h2>Your Shopping Cart</h2>
-          {cart.map((item) => (
-            <div className="cart-item" key={`${item.id}-${item.count}`}>
+<div className="shopping-cart">
+  {cart.length === 0 ? (
+    <p>Your cart is empty.</p>
+  ) : (
+    <div className="cart-items-container">
+      <h2>Your Shopping Cart</h2>
+      {cart.map((item) => (
+        <div className="cart-item" key={`${item.id}-${item.count}`}>
               <img src={item.image} alt={item.title} className="cart-item-img" />
               <div className="cart-item-info">
                 <h3 className="cart-item-title">{item.title}</h3>
@@ -73,15 +87,16 @@ function ShoppingCart() {
           {/* display the total price here as well */}
           <p className="cart-total">Total Price: ${totalPrice.toFixed(2)}</p>
           <button className="checkout" onClick={handleCheckout}>
-            Checkout
+           Checkout
           </button>
+          <div id="checkout"></div> {/* Add an ID here */}
           <Modal
             isOpen={isModalOpen}
             onRequestClose={handleCloseModal}
             shouldCloseOnOverlayClick={false} // This line prevents the modal from closing on overlay click
             className="modal"
             overlayClassName="overlay"
-          >
+             >
             <h2>Checkout</h2>
             <p>{createCheckoutMessage()}</p>
             <button onClick={handleCloseModal}>Close</button>
