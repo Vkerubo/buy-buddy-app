@@ -13,11 +13,28 @@ function Footer() {
     setGender(event.target.value);
   };
 
-  const handleSubscribe = () => {
-    // Do something with the email and gender values
-    console.log(`Subscribing ${email} (${gender}) to the newsletter...`);
+  const handleSubscribe = async () => {
+    try {
+      const response = await fetch('https://fakestoreapi.com/products/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          gender
+        })
+      });
+      if (response.ok) {
+        console.log('Successfully subscribed!');
+      } else {
+        console.error('Failed to subscribe:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('Failed to subscribe:', error);
+    }
   };
-
+  
   const handleReportProduct = () => {
     // Do something when "Report a Product" link is clicked
     console.log("Reporting a product...");
