@@ -55,24 +55,29 @@ function ProductList() {
   const sortedProducts = sortProducts(filteredProducts, sortingOption);
 
   return (
-    <div>
-      <div>
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={searchQuery}
-          onChange={handleSearchInputChange}
-          onKeyDown={handleSearchInputKeyDown}
-        />
-        <button onClick={handleSearch}>Search</button>
-        <select value={sortingOption} onChange={handleSortingOptionChange}>
-          <option value="none">Sort by price</option>
-          <option value="low-to-high">Low to high</option>
-          <option value="high-to-low">High to low</option>
-        </select>
+    <div className="product-list-container">
+      <div className="search-and-sort-container">
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+            onKeyDown={handleSearchInputKeyDown}
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
+        <div className="sort-container">
+          <label htmlFor="sort">Sort by price:</label>
+          <select id="sort" value={sortingOption} onChange={handleSortingOptionChange}>
+            <option value="none">None</option>
+            <option value="low-to-high">Low to high</option>
+            <option value="high-to-low">High to low</option>
+          </select>
+        </div>
       </div>
       <section>
-        <div className="container">
+        <div className="product-list">
           <h2>Product List</h2>
           {sortedProducts.length === 0 ? (
             <p>Product not found!</p>
