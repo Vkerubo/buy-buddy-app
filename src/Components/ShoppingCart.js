@@ -10,8 +10,9 @@ function ShoppingCart() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleRemoveFromCart = (product) => {
-    removeFromCart(product);
+  const handleRemoveFromCart = (item) => {
+    removeFromCart(item);
+    setTotalPrice((prevTotalPrice) => prevTotalPrice - item.price);
   };
 
   const handleCheckout = () => {
@@ -23,29 +24,12 @@ function ShoppingCart() {
   };
 
   const createCheckoutMessage = () => {
-    const items = cart.map((item) => ({
-      title: item.title,
-      count: item.count - (item.removedCount || 0),
-      price: item.price,
-    }));
-    const total = cart.reduce(
-      (acc, item) => acc + (item.count - (item.removedCount || 0)) * item.price,
-      0
-    );
-    return (
-      <div>
-        <p>Your Order:</p>
-        <ol>
-          {items.map((item) => (
-            <li key={item.title}>
-              {item.title} ({item.count} x ${item.price}) = $
-              {(item.count * item.price).toFixed(2)}
-            </li>
-          ))}
-        </ol>
-        <p>Total Price: ${total.toFixed(2)}</p>
-      </div>
-    );
+    let message = "";
+    cart.forEach((item) => {
+      message += `${item.title} (${item.count - (item.removedCount || 0)} x ${item.price}) = ${(item.count * item.price).toFixed(2)}\n`;
+    });
+    message += `Total: $${totalPrice.toFixed(2)}`;
+    return message;
   };
 
   return (
