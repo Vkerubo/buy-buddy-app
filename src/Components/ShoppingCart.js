@@ -12,6 +12,9 @@ function ShoppingCart() {
 
   const handleRemoveFromCart = (product) => {
     removeFromCart(product);
+    // subtract the removed count from the total price
+    const removedCount = product.removedCount || 0;
+    setTotalPrice(totalPrice - (product.price * (product.count - removedCount)));
   };
 
   const handleCheckout = () => {
@@ -23,15 +26,13 @@ function ShoppingCart() {
   };
 
   const createCheckoutMessage = () => {
+    // use the totalPrice state variable here
+    const total = totalPrice.toFixed(2);
     const items = cart.map((item) => ({
       title: item.title,
       count: item.count - (item.removedCount || 0),
       price: item.price,
     }));
-    const total = cart.reduce(
-      (acc, item) => acc + (item.count - (item.removedCount || 0)) * item.price,
-      0
-    );
     return (
       <div>
         <p>Your Order:</p>
@@ -43,31 +44,34 @@ function ShoppingCart() {
             </li>
           ))}
         </ol>
-        <p>Total Price: ${total.toFixed(2)}</p>
+        {/* display the total price here */}
+        <p>Total Price: ${total}</p>
       </div>
     );
   };
 
   return (
-    <div>
+    <div className="shopping-cart">
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div>
+        <div className="cart-items-container">
           <h2>Your Shopping Cart</h2>
           {cart.map((item) => (
-            <div key={`${item.id}-${item.count}`}>
-              <h3>{item.title}</h3>
-              <img src={item.image} alt={item.title} />
-              <p>Price: ${item.price}</p>
-              <p>
-                Added to cart: {item.count - (item.removedCount || 0)} times
-              </p>
-              <button onClick={() => handleRemoveFromCart(item)}>
-                Remove from Cart
-              </button>
+            <div className="cart-item" key={`${item.id}-${item.count}`}>
+              <img src={item.image} alt={item.title} className="cart-item-img" />
+              <div className="cart-item-info">
+                <h3 className="cart-item-title">{item.title}</h3>
+                <p className="cart-item-price">${item.price}</p>
+                <p className="cart-item-count">Added to cart: {item.count - (item.removedCount || 0)} times</p>
+                <button className="cart-item-remove" onClick={() => handleRemoveFromCart(item)}>
+                  Remove from Cart
+                </button>
+              </div>
             </div>
           ))}
+          {/* display the total price here as well */}
+          <p className="cart-total">Total Price: ${totalPrice.toFixed(2)}</p>
           <button className="checkout" onClick={handleCheckout}>
             Checkout
           </button>
