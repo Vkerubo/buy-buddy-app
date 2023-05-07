@@ -38,7 +38,20 @@ function Navbar() {
   };
   return (
     <nav className="navbar">
-      <Link to="/">HOME</Link>
+      <Link
+        to="/"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          transition: "all 0.3s",
+        }}
+      >
+        <img
+          src="https://img.icons8.com/?size=512&id=86527&format=png"
+          alt="Home icon"
+          style={{ width: "35px", height: "35px", marginRight: "8px" }}
+        />
+      </Link>
       <Link to="/products">EXPLORE OUR PRODUCTS</Link>
       <Link
         to="/cart"
