@@ -14,6 +14,13 @@ function Footer() {
   };
 
   const handleSubscribe = async () => {
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      console.error('Invalid email format');
+      return;
+    }
+    
     try {
       const response = await fetch('https://fakestoreapi.com/products/newsletter/subscribe', {
         method: 'POST',
@@ -34,6 +41,7 @@ function Footer() {
       console.error('Failed to subscribe:', error);
     }
   };
+  
   
   const handleReportProduct = () => {
     // Do something when "Report a Product" link is clicked
