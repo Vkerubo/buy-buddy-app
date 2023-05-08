@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Product from "./Product";
+import AddProductForm from "./AddProductForm";
 import "./ProductList.css";
 
 function ProductList() {
@@ -7,6 +8,7 @@ function ProductList() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sortingOption, setSortingOption] = useState("none");
+  const [showAddProductForm, setShowAddProductForm] = useState(false);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -39,6 +41,12 @@ function ProductList() {
     }
   };
 
+  const handleAddProduct = (newProduct) => {
+    setProducts([...products, newProduct]);
+    setFilteredProducts([...filteredProducts, newProduct]);
+    setShowAddProductForm(false);
+  };
+
   const sortProducts = (products, option) => {
     switch (option) {
       case "none":
@@ -69,16 +77,23 @@ function ProductList() {
         </div>
         <div className="sort-container">
           <label htmlFor="sort">Sort by price:</label>
-          <select id="sort" value={sortingOption} onChange={handleSortingOptionChange}>
+          <select
+            id="sort"
+            value={sortingOption}
+            onChange={handleSortingOptionChange}
+          >
             <option value="none">None</option>
             <option value="low-to-high">Low to high</option>
             <option value="high-to-low">High to low</option>
           </select>
         </div>
       </div>
+      <button onClick={() => setShowAddProductForm(!showAddProductForm)}>
+        Add Product
+      </button>
+      {showAddProductForm && <AddProductForm onAddProduct={handleAddProduct} />}
       <section>
         <div className="product-list">
-          <h2>Product List</h2>
           {sortedProducts.length === 0 ? (
             <p>Product not found!</p>
           ) : (
