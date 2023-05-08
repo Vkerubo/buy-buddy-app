@@ -33,7 +33,7 @@ footer h3 {
   padding: 8px 16px;
   border-radius: 5px;
   border: none;
-  background-color: #ffb6c1;
+  background-color: #d60a29;
   color: white;
   font-size: 14px;
   cursor: pointer;
@@ -43,7 +43,9 @@ footer h3 {
   height: 20px;
 }
 
-.social-media a {
+.social-media img {
+  width: 5px;
+  margin-right: 10px;
   margin-right: 5px;
   color: #1b99c0;
   font-size: 20px;
