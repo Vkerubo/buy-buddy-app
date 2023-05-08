@@ -11,8 +11,15 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+  background-image: url();
+  background-size: cover;
+  background-position: center;
+  background-color: #0bcce6;
+  padding: 5px;
+
   background-color: #918989;
   padding: 10px;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -37,6 +44,9 @@ footer h3 {
   padding: 8px 16px;
   border-radius: 5px;
   border: none;
+
+  background-color: #d60a29;
+
   background-color: #b40721;
   color: white;
   font-size: 14px;
@@ -48,11 +58,20 @@ footer h3 {
 }
 
 .social-media img {
+
+  width: 5px;
+  margin-right: 10px;
+  margin-right: 5px;
+  color: #1b99c0;
+  font-size: 20px;
+  padding: 20px;
+
   width: 40px;
   margin-right: 10px;
   margin-right: 3px;
   color: #a80d0d;
   font-size: 5px;
+
 }
 
 .payment-methods img {

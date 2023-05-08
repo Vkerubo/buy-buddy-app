@@ -13,6 +13,25 @@ function Footer() {
     setGender(event.target.value);
   };
 
+  const handleSubscribe = async () => {
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      console.error('Invalid email format');
+      return;
+    }
+    
+    try {
+      const response = await fetch('https://fakestoreapi.com/products/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          gender
+        })
+
   const handleSubscribe = () => {
     // Send a POST request to a server with the email and gender values
     fetch("https://fakestoreapi.com/products/subscribe", {
@@ -31,8 +50,14 @@ function Footer() {
       })
       .catch((error) => {
         console.log("Error subscribing:", error);
+
       });
   };
+
+  
+  
+
+
 
   const handleReportProduct = () => {
     // Do something when "Report a Product" link is clicked
