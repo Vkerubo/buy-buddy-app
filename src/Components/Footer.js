@@ -1,17 +1,55 @@
 import React, { useState } from "react";
 import "./Footer.css";
+import { FaTimes } from "react-icons/fa";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 function Footer() {
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
+  const [subscriptionStatus, setSubscriptionStatus] = useState("");
+  const [showReportForm, setShowReportForm] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
+  const handleReportProduct = (event) => {
+    event.preventDefault();
+    setShowReportForm(true);
+    setShowSuccessMessage(false);
+  };
+
+  const handleReportSubmit = (event) => {
+    event.preventDefault();
+    // Submit the report form data to the server
+    // ...
+    setShowSuccessMessage(true); // show the success message
+  };
+
+  function handleCloseReportForm() {
+    setShowReportForm(false);
+  }
+
   const handleGenderChange = (event) => {
     setGender(event.target.value);
   };
+
+  const handleVisaClick = () => {
+    window.location.href = 'https://www.visa.com/';
+  }
+
+  const handleMastercardClick = () => {
+    window.location.href = 'https://www.mastercard.us/';
+  }
 
   const handleSubscribe = () => {
     // Send a POST request to a server with the email and gender values
@@ -24,19 +62,15 @@ function Footer() {
     })
       .then((response) => {
         if (response.ok) {
-          console.log("Subscribed successfully");
+          setSubscriptionStatus("Subscribed successfully");
         } else {
-          console.log("Failed to subscribe");
+          setSubscriptionStatus("Failed to subscribe");
         }
       })
       .catch((error) => {
         console.log("Error subscribing:", error);
+        setSubscriptionStatus("Failed to subscribe");
       });
-  };
-
-  const handleReportProduct = () => {
-    // Do something when "Report a Product" link is clicked
-    console.log("Reporting a product...");
   };
 
   return (
@@ -56,50 +90,47 @@ function Footer() {
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
-          <button onClick={handleSubscribe}>Subscribe</button>
+          <button type="button" onClick={handleSubscribe}>Subscribe</button>
+          {subscriptionStatus && <p>{subscriptionStatus}</p>}
         </div>
       </div>
       <div className="app-buttons">
         <h3>Download Buy-buddy free App</h3>
         <div>
-          <button>
-            <img
-              src="https://via.placeholder.com/200x50.png?text=AppStore"
-              alt="Download on the App Store"
-            />
-          </button>
-          <button>
-            <img
-              src="https://via.placeholder.com/200x50.png?text=Google+Play"
-              alt="Get it on Google Play"
-            />
-          </button>
-        </div>
+        <button>
+        <a href="https://www.apple.com/ios/app-store/" className="app-store-btn">App Store</a>
+       </button>
+     <button>
+     <a href="https://play.google.com/store/apps" className="play-store-btn">Play Store</a>
+    </button>
+       </div>
       </div>
       <div className="social-media">
-        <h3>Follow us on social media</h3>
-        <div>
-          <a href="https://www.facebook.com/buybuddy">
-            <i className="fab fa-facebook"></i>
-          </a>
-          <a href="https://twitter.com/buybuddy">
-            <i className="fab fa-twitter"></i>
-          </a>
-          <a href="https://www.instagram.com/buybuddy/">
-            <i className="fab fa-instagram"></i>
-          </a>
-        </div>
+         <h3>Follow us on social media</h3>
+      <div>
+         <a href="https://www.facebook.com/buybuddy">
+          <FontAwesomeIcon icon={faFacebook} />
+        </a>
+         <a href="https://twitter.com/buybuddy">
+         <FontAwesomeIcon icon={faTwitter} />
+        </a>
+        <a href="https://www.instagram.com/buybuddy/">
+         <FontAwesomeIcon icon={faInstagram} />
+        </a>
       </div>
-      <div className="payment-methods">
+    </div>
+    <div className="payment-methods">
         <h3>Payment Methods</h3>
         <div>
           <img
             src="https://via.placeholder.com/100x50.png?text=Visa"
             alt="Visa"
+            onClick={handleVisaClick}
           />
           <img
             src="https://via.placeholder.com/100x50.png?text=Mastercard"
             alt="Mastercard"
+            onClick={handleMastercardClick}
           />
         </div>
       </div>
@@ -119,13 +150,30 @@ function Footer() {
             <b>Headquarters:</b> Drive Inn lane, Westlands, Nairobi
           </p>
           <p>
-            <a href="#" onClick={handleReportProduct}>
+            <a href="/" onClick={handleReportProduct}>
               Report a Product
             </a>
           </p>
+          {showReportForm && (
+            <form className="report-form" onSubmit={handleReportSubmit}>
+              <button className="close-btn" onClick={handleCloseReportForm}>
+                <FaTimes />
+              </button>
+              <label>
+                Product Name:
+                <input type="text" name="productName" />
+              </label>
+              <label>
+                Issue:
+                <textarea name="issue" />
+              </label>
+              <button type="submit">Submit</button>
+              {showSuccessMessage && <p>Thank you for submitting your issue!</p>}
+            </form>
+          )}
         </div>
       </div>
-    </footer>
+</footer>
   );
 }
 
