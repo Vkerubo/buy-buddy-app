@@ -1,5 +1,5 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import "./NavBar.css";
 
 function Navbar() {
@@ -8,6 +8,9 @@ function Navbar() {
   const [password, setPassword] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+
   const handleLogin = (e) => {
     e.preventDefault();
     if (email === "" || password === "") {
@@ -16,12 +19,15 @@ function Navbar() {
     }
     setLoggedIn(true);
   };
+
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
+
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
   const handleSignup = (e) => {
     e.preventDefault();
     if (signupEmail === "" || signupPassword === "") {
@@ -30,12 +36,25 @@ function Navbar() {
     }
     setLoggedIn(true);
   };
+
   const handleSignupEmailChange = (e) => {
     setSignupEmail(e.target.value);
   };
+
   const handleSignupPasswordChange = (e) => {
     setSignupPassword(e.target.value);
   };
+
+  const handleLoginClick = () => {
+    setShowLogin(!showLogin);
+    setShowSignup(false);
+  };
+
+  const handleSignupClick = () => {
+    setShowSignup(!showSignup);
+    setShowLogin(false);
+  };
+
   return (
     <nav className="navbar">
       <Link
@@ -69,46 +88,52 @@ function Navbar() {
       </Link>
       {!loggedIn && (
         <div className="login-form">
-          <form onSubmit={handleLogin}>
-            <input
-              type="text"
-              name="email"
-              placeholder="Email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <div className="login-buttons">
-              <button type="submit">Log In</button>
-            </div>
-          </form>
-          <div className="signup-form">
-            <form onSubmit={handleSignup}>
+          <button onClick={handleLoginClick}>Log In</button>
+          <button onClick={handleSignupClick}>Sign Up</button>
+          {showLogin && (
+            <form onSubmit={handleLogin}>
               <input
                 type="text"
-                name="signup-email"
+                name="email"
                 placeholder="Email"
-                value={signupEmail}
-                onChange={handleSignupEmailChange}
+                value={email}
+                onChange={handleEmailChange}
               />
               <input
                 type="password"
-                name="signup-password"
+                name="password"
                 placeholder="Password"
-                value={signupPassword}
-                onChange={handleSignupPasswordChange}
+                value={password}
+                onChange={handlePasswordChange}
               />
-              <div className="signup-buttons">
-                <button type="submit">Sign Up</button>
+              <div className="login-buttons">
+                <button type="submit">Log In</button>
               </div>
             </form>
-          </div>
+          )}
+          {showSignup && (
+            <div className="signup-form">
+              <form onSubmit={handleSignup}>
+                <input
+                  type="text"
+                  name="signup-email"
+                  placeholder="Email"
+                  value={signupEmail}
+                  onChange={handleSignupEmailChange}
+                />
+                <input
+                  type="password"
+                  name="signup-password"
+                  placeholder="Password"
+                  value={signupPassword}
+                  onChange={handleSignupPasswordChange}
+                />
+                <div className="signup-buttons">
+                  <button type="submit">Sign Up</button>
+                </div>
+              </form>
+            </div>
+          )}
         </div>
       )}
       {loggedIn && <button>Logged In!</button>}
@@ -120,4 +145,5 @@ function Navbar() {
     </nav>
   );
 }
+
 export default Navbar;
