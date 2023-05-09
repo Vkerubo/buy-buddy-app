@@ -3,7 +3,7 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #918989;
+  background-color: #574545;
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
@@ -39,16 +39,47 @@ footer h3 {
   height: 20px;
 }
 
+.app-store-btn,
+.play-store-btn {
+  display: inline-block;
+  padding: 8px 16px; /* decrease padding */
+  background-color: gray;
+  color: #000;
+  font-size: 16px; /* decrease font size */
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.app-store-btn:hover, .play-store-btn:hover {
+  background-color: grey; /* darker blue on hover */
+  color: #000; /* black text color */
+}
+
+.social-media {
+  text-align: center; /* add this property to center the content */
+}
+
 .social-media a {
   margin-right: 8px;
   color: #333;
   font-size: 20px;
 }
 
+.social-media a:hover {
+  color: blue;
+}
+
+.payment-methods img:hover {
+  filter: brightness(80%);
+  color: #000;
+}
+
+
 .payment-methods img {
   height: 23px;
   margin-right: 4px;
 }
+
 
 .about-us p {
   margin-bottom: 10px;
@@ -69,4 +100,46 @@ body {
 .content {
   margin-bottom: 50px;
   margin-top: 300px; /* change 20px to match your footer height */
+}
+
+.report-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.report-form label {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.report-form input[type="text"],
+.report-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.report-form button {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.report-form button:hover {
+  background-color: #0062cc;
+}
+
+.close-btn {
+  margin-left: 600px;
 }
